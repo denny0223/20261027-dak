@@ -1,0 +1,4 @@
+{
+  "markdown.marp.themes": ["./devfest-2026.css"],
+  "markdown.marp.enableHtml": true
+}

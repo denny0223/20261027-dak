@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="330" viewBox="0 0 1000 330">
+  <style>
+    text{font-family:'Noto Sans CJK TC','Noto Sans TC',sans-serif;fill:#1e1e1e}
+    .label{font-size:27px;font-weight:700}.meta{font-size:22px;fill:#5f6368}.value{font-size:32px;font-weight:700}
+  </style>
+  <text x="46" y="32" class="label">2025 年 1 月：訂單類型拆解</text>
+  <text x="46" y="64" class="meta">長條＝訂單數占比 · 右側＝平均每筆訂單金額（USD）</text>
+
+  <text x="46" y="110" class="label">線上訂單</text><text x="920" y="110" class="value" text-anchor="end">$109.97</text>
+  <rect x="46" y="125" width="780" height="24" rx="12" fill="#e8f0fe"/><rect x="46" y="125" width="378" height="24" rx="12" fill="#4285f4"/>
+  <text x="440" y="145" class="meta">48.5% · 58,834 筆</text>
+
+  <text x="46" y="190" class="label">實體門市</text><text x="920" y="190" class="value" text-anchor="end">$109.38</text>
+  <rect x="46" y="205" width="780" height="24" rx="12" fill="#eeeafe"/><rect x="46" y="205" width="242" height="24" rx="12" fill="#6f63e8"/>
+  <text x="304" y="225" class="meta">31.0% · 37,605 筆</text>
+
+  <text x="46" y="270" class="label">B2B 企業批發</text><text x="920" y="270" class="value" text-anchor="end" fill="#ea4335">$75.72</text>
+  <rect x="46" y="285" width="780" height="24" rx="12" fill="#fce8e6"/><rect x="46" y="285" width="161" height="24" rx="12" fill="#ea4335"/>
+  <text x="223" y="305" class="meta">20.6% · 25,000 筆</text>
+</svg>

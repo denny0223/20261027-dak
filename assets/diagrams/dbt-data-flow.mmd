@@ -1,0 +1,40 @@
+---
+config:
+  theme: base
+  look: classic
+  htmlLabels: false
+  themeVariables:
+    fontFamily: 'Noto Sans CJK TC, Noto Sans, sans-serif'
+    fontSize: 28px
+    primaryColor: '#ffffff'
+    primaryTextColor: '#1e1e1e'
+    primaryBorderColor: '#5f6368'
+    lineColor: '#5f6368'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: ".edgeLabel { font-size: 23px; } .cluster-label { font-weight: 600; }"
+  flowchart:
+    curve: linear
+    wrappingWidth: 400
+    padding: 12
+    nodeSpacing: 20
+    rankSpacing: 16
+---
+flowchart LR
+  accTitle: 本機 dbt 與 BigQuery 的分工
+  accDescr: 本機 dbt 編譯並提交模型 SQL，也執行測試。BigQuery 使用 orders、order_items，以及透過 Connection 與 EXTERNAL_QUERY 取得的 Cloud SQL 查詢結果，彙整並 JOIN 成每筆訂單一列的 fct_order_analysis。
+
+  D["本機 dbt/<br/>模型與測試"]
+  C["Cloud SQL<br/>customers<br/>pet_profiles"]
+  subgraph BQ["BigQuery：執行資料轉換"]
+    O["orders<br/>order_items"]
+    X["EXTERNAL_QUERY()"]
+    F["fct_order_analysis<br/>彙整、JOIN<br/>每筆訂單一列"]
+    O --> F
+    X --> F
+  end
+  C -->|"Connection<br/>查詢結果"| X
+  D -.->|"提交 SQL<br/>執行 tests"| F
+
+  style D fill:#f0f0f0,stroke:#5f6368,stroke-width:1px
+  style C fill:#ccf6c5,stroke:#5f6368,stroke-width:1px
+  style BQ fill:#c3ecf6,stroke:#5f6368,stroke-width:1px

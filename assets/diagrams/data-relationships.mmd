@@ -1,0 +1,46 @@
+---
+config:
+  theme: base
+  look: classic
+  htmlLabels: false
+  themeVariables:
+    fontFamily: 'Noto Sans CJK TC, Noto Sans, sans-serif'
+    fontSize: 28px
+    primaryColor: '#ffffff'
+    primaryTextColor: '#1e1e1e'
+    primaryBorderColor: '#5f6368'
+    lineColor: '#5f6368'
+    edgeLabelBackground: '#ffffff'
+  themeCSS: ".edgeLabel { font-size: 23px; } .cluster-label { font-weight: 600; }"
+  flowchart:
+    curve: linear
+    wrappingWidth: 400
+    padding: 12
+    nodeSpacing: 20
+    rankSpacing: 16
+---
+flowchart LR
+  accTitle: 資料的位置與對照欄位
+  accDescr: Cloud SQL 的客戶對應多隻寵物與多筆 BigQuery 訂單；每筆訂單對應多筆明細。Cloud Storage 的促銷活動依 promo_code 對照訂單。連線表示資料關係。
+
+  subgraph SQL["Cloud SQL"]
+    direction TB
+    C["customers<br/>客戶"]
+    P["pet_profiles<br/>寵物"]
+    C ---|"customer_id<br/>1 : N"| P
+  end
+  subgraph BQ["BigQuery"]
+    direction TB
+    O["orders<br/>訂單"]
+    I["order_items<br/>訂單明細"]
+    O ---|"order_id<br/>1 : N"| I
+  end
+  subgraph GCS["Cloud Storage"]
+    M["promo_events.json<br/>促銷活動"]
+  end
+  SQL ---|"customer_id<br/>1 : N"| BQ
+  BQ ---|"promo_code"| GCS
+
+  style SQL fill:#ccf6c5,stroke:#5f6368,stroke-width:1px
+  style BQ fill:#c3ecf6,stroke:#5f6368,stroke-width:1px
+  style GCS fill:#ffe7a5,stroke:#5f6368,stroke-width:1px
